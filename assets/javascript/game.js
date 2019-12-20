@@ -11,14 +11,13 @@ var guessesLeftText = document.getElementById("GuessesLeft");
 var winsText = document.getElementById("wins");
 var lossesText = document.getElementById("losses");
 var counterText = document.getElementById("guessesLeft");
-var gameOverText = document.getElementById("You Lose");
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 
 // generate random letter
 var letter = letters[Math.floor(Math.random() * letters.length)]
 
-// reset our guesses
+// reset guessed letters
 var resetGuesses = function () {
      document.querySelector("#guessesSoFar").innerHTML = "Your guesses so far:";
 }
@@ -30,7 +29,7 @@ var getNewLetter = function () {
 }
 
 // This function is run whenever the user presses a key.
-document.onkeyup = function (event) {
+document.onkeydown = function (event) {
      var userGuess = event.key;
      counter--;
 
