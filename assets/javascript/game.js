@@ -11,6 +11,8 @@ var guessesLeftText = document.getElementById("GuessesLeft");
 var winsText = document.getElementById("wins");
 var lossesText = document.getElementById("losses");
 var counterText = document.getElementById("guessesLeft");
+
+// created an array of letters a-z
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 
@@ -19,7 +21,7 @@ var letter = letters[Math.floor(Math.random() * letters.length)]
 
 // reset guessed letters
 var resetGuesses = function () {
-     document.querySelector("#guessesSoFar").innerHTML = "Your guesses so far:";
+     document.querySelector("#guessesSoFar").innerHTML = "Your guesses so far: ";
 }
 
 // function to pick new letter when if/else statements met
@@ -32,34 +34,28 @@ var getNewLetter = function () {
 document.onkeydown = function (event) {
      var userGuess = event.key;
      counter--;
-
+     guessesSoFarText.textContent += " " + userGuess;
+     
      // if else statements to compare user guesses to computer answer 
      if (userGuess === letter) {
+          resetGuesses();
           counter = 9;
           wins++;
           letter = getNewLetter();
-          resetGuesses();
           alert("You're reading my mind!");
      }
 
      else if (counter === 0) {
+          resetGuesses();
           counter = 9;
           losses++;
           letter = getNewLetter();
-          resetGuesses();
           alert("Your clairvoyance needs work")
      }
-
-     // testing to see if I get correct results
-     console.log(counter);
-     console.log(letter);
-     console.log(userGuess);
-
+    
      // Display the user guess number, and wins/losses.
-     guessesSoFarText.textContent += " " + userGuess;
      winsText.textContent = "wins: " + wins;
      lossesText.textContent = "losses: " + losses;
      counterText.textContent = "Guesses Left: " + counter;
-
 };
 
